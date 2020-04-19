@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/add-time}" th:object="${timek}" method="post">
+    <p>Total Time Worked <input type="number" th:field="*{totalTimeWorked}"></p>
+
+    <p> Indle time <input type="number" th:field="*{indleTime}"></p>
+    <p th:if="${#fields.hasErrors('date')}" th:errors="*{date} " class="error"></p>
+    <p> Date <input th:field=" *{date}" type="date"></p>
+    <p> add new time <input type="submit" value="add new time"></p>
+
+</form>
+
+</body>
+</html>

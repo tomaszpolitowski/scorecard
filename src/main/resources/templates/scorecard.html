@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    .error
+    {
+    color: #ff0000;
+    font-weight: bold;
+    }
+        </style>
+
+</head>
+
+<body>
+
+<p>
+    <tr th:each="score:${scores}">
+        <td th:text="${score.getUsername()}"/>
+        <td th:text="${score.getTotalTimeWorked()}"></td>
+        <td th:text="${score.getIndleTime()}"></td>
+        <td th:text="${score.getDate()}"></td>
+    </tr>
+</p>
+
+<form th:action="@{/add-score}" th:object="${scorek}" method="post">
+    <p>Total Time Worked <input type="number" th:field="*{totalTimeWorked}"></p>
+    <p> Indle time <input type="number" th:field="*{indleTime}"></p>
+    <p> slimtipRepairs <input type="number" th:field="*{slimtipRepairs}"></p>
+    <p> cShellRepairs <input type="number" th:field="*{cShellRepairs}"></p>
+    <p> itcRemakes <input type="number" th:field="*{itcRemakes}"></p>
+    <p> iteRepairs <input type="number" th:field="*{iteRepairs}"></p>
+    <p> bteRicRepairs <input type="number" th:field="*{bteRicRepairs}"></p>
+    <p> iteDevicesIn <input type="number" th:field="*{iteDevicesIn}"></p>
+    <p> bteDevicesIn <input type="number" th:field="*{bteDevicesIn}"></p>
+    <p> iteOrdersIn <input type="number" th:field="*{iteOrdersIn}"></p>
+    <p> accessories <input type="number" th:field="*{accessories}"></p>
+    <p> bteCreatingRepairsRaports <input type="number" th:field="*{bteCreatingRepairsRaports}"></p>
+    <p> iteCreatingRepairsRaports <input type="number" th:field="*{iteCreatingRepairsRaports}"></p>
+    <p> ordersScan <input type="number" th:field="*{ordersScan}"></p>
+    <p> devicesOut <input type="number" th:field="*{devicesOut}"></p>
+    <p> reset <input type="number" th:field="*{reset}"></p>
+    <p> housingReplacement <input type="number" th:field="*{housingReplacement}"></p>
+    x<p th:if="${#fields.hasErrors('date')}" th:errors="*{date} " class="error"></p>
+    <p> Date <input th:field=" *{date}" type="date"></p>
+        <p> add new score <input type="submit" value="add new score"></p>
+
+</form>
+
+</body>
+</html>
